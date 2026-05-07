@@ -122,15 +122,15 @@ export default function Home() {
       {/* Noise overlay */}
       <div className="noise-overlay" aria-hidden="true" />
 
-      {/* Ambient orbs */}
-      <div className="orb orb-1" style={{ width: '400px', height: '400px', top: '-150px', left: '-100px' }} aria-hidden="true" />
-      <div className="orb orb-2" style={{ width: '350px', height: '350px', top: '50px', right: '-100px' }} aria-hidden="true" />
+      {/* Liquid blobs */}
+      <div className="liquid-blob liquid-blob-1" style={{ top: '-150px', left: '-100px', width: '400px', height: '400px' }} aria-hidden="true" />
+      <div className="liquid-blob liquid-blob-2" style={{ top: '50px', right: '-100px', width: '350px', height: '350px' }} aria-hidden="true" />
 
       {/* Header */}
       <div className="mb-10 text-center relative z-10">
-        <div className="badge-3d mx-auto mb-4 w-fit">🤖 AI Market Intelligence</div>
+        <div className="pill-glass mx-auto mb-4 w-fit">🤖 AI Market Intelligence</div>
         <h1 className="text-3xl md:text-4xl font-bold mb-3 reveal-3d">
-          <span className="gradient-text">Business</span> Idea Agent
+          <span className="text-iridescent">Business</span> Idea Agent
         </h1>
         <p className="text-white/50 text-sm max-w-lg mx-auto reveal stagger-1">
           AI agent scans current market trends, finds gaps, and surfaces actionable SaaS ideas you can build and monetize this week.
@@ -139,7 +139,7 @@ export default function Home() {
       </div>
 
       {/* Input */}
-      <div className="bg-gray-900/60 backdrop-blur-sm border border-white/[0.08] rounded-2xl p-5 mb-6 space-y-4 relative z-10 reveal stagger-2">
+      <div className="glass-liquid p-5 mb-6 space-y-4 relative z-10 reveal stagger-2">
         <div className="flex gap-3">
           <input
             value={trend}
