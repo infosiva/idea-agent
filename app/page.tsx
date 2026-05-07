@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { Sparkles } from 'lucide-react'
 import { BusinessIdea, TrendReport } from '@/lib/trendScanner'
 
 const SEED_TRENDS = [
@@ -118,116 +119,130 @@ export default function Home() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10 relative">
-      {/* Noise overlay */}
+    <div className="min-h-screen bg-gray-950 text-white relative overflow-x-hidden">
       <div className="noise-overlay" aria-hidden="true" />
 
-      {/* Liquid blobs */}
-      <div className="liquid-blob liquid-blob-1" style={{ top: '-150px', left: '-100px', width: '400px', height: '400px' }} aria-hidden="true" />
-      <div className="liquid-blob liquid-blob-2" style={{ top: '50px', right: '-100px', width: '350px', height: '350px' }} aria-hidden="true" />
+      <div className="liquid-blob liquid-blob-1" style={{ top: '-180px', left: '-120px', width: '500px', height: '500px', background: 'radial-gradient(circle, #6366f1 0%, transparent 70%)' }} aria-hidden="true" />
+      <div className="liquid-blob liquid-blob-2" style={{ top: '120px', right: '-140px', width: '420px', height: '420px', background: 'radial-gradient(circle, #8b5cf6 0%, transparent 70%)' }} aria-hidden="true" />
+      <div className="liquid-blob liquid-blob-3" style={{ bottom: '10%', left: '30%', width: '360px', height: '360px', background: 'radial-gradient(circle, #ec4899 0%, transparent 70%)' }} aria-hidden="true" />
 
-      {/* Header */}
-      <div className="mb-10 text-center relative z-10">
-        <div className="pill-glass mx-auto mb-4 w-fit">🤖 AI Market Intelligence</div>
-        <h1 className="text-3xl md:text-4xl font-bold mb-3 reveal-3d">
-          <span className="text-iridescent">Business</span> Idea Agent
-        </h1>
-        <p className="text-white/50 text-sm max-w-lg mx-auto reveal stagger-1">
-          AI agent scans current market trends, finds gaps, and surfaces actionable SaaS ideas you can build and monetize this week.
-        </p>
-        <div className="glow-line mt-6 reveal stagger-2" />
-      </div>
+      <nav className="relative z-20 flex items-center justify-between px-6 md:px-10" style={{ height: '52px' }}>
+        <div className="flex items-center gap-2.5">
+          <Sparkles className="w-5 h-5 text-indigo-400" />
+          <span className="font-bold text-base tracking-tight">IdeaAgent</span>
+          <span className="pill-glass text-xs ml-1">AI Market Intel</span>
+        </div>
+        <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">Sign in</a>
+      </nav>
 
-      {/* Input */}
-      <div className="glass-liquid p-5 mb-6 space-y-4 relative z-10 reveal stagger-2">
-        <div className="flex gap-3">
-          <input
-            value={trend}
-            onChange={e => setTrend(e.target.value)}
-            onKeyDown={e => e.key === 'Enter' && !loading && scan()}
-            placeholder="Enter a trend or market (e.g. 'AI voice agents', 'B2B SaaS for lawyers')..."
-            className="flex-1 bg-gray-800 border border-gray-700 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:border-blue-500 placeholder-gray-600"
-          />
-          <button
-            onClick={() => scan()}
-            disabled={loading}
-            className="bg-blue-600 hover:bg-blue-500 disabled:opacity-50 px-5 py-2.5 rounded-xl font-medium text-sm transition-colors whitespace-nowrap"
-          >
-            {loading ? '⏳ Scanning...' : '🔍 Scan'}
-          </button>
+      <section className="relative z-10 flex flex-col items-center justify-center min-h-[85vh] px-4 pt-6 pb-12">
+        <div className="w-full max-w-2xl text-center mb-10">
+          <h1 className="text-4xl md:text-6xl font-black leading-tight mb-4">
+            Spot the next{' '}
+            <span className="text-iridescent">big thing</span>
+          </h1>
+          <p className="text-gray-400 text-base md:text-lg max-w-lg mx-auto">
+            Type a trend. AI scans the market. Get 6 buildable SaaS ideas in seconds.
+          </p>
         </div>
 
-        {/* Seed trends */}
-        <div>
-          <p className="text-xs text-gray-600 mb-2">Or pick a hot trend:</p>
-          <div className="flex flex-wrap gap-2">
+        <div className="w-full max-w-2xl space-y-4">
+          <div className="glass-liquid rounded-2xl p-2 flex items-center gap-2">
+            <input
+              value={trend}
+              onChange={e => setTrend(e.target.value)}
+              onKeyDown={e => e.key === 'Enter' && !loading && scan()}
+              placeholder="What trend are you curious about?"
+              className="flex-1 bg-transparent px-4 py-3 text-sm md:text-base focus:outline-none placeholder-gray-500"
+            />
+            <button
+              onClick={() => scan()}
+              disabled={loading}
+              style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)' }}
+              className="shrink-0 disabled:opacity-50 px-5 py-3 rounded-xl font-semibold text-sm transition-all hover:opacity-90 whitespace-nowrap flex items-center gap-2"
+            >
+              <Sparkles className="w-4 h-4" />
+              {loading ? 'Scanning...' : 'Scan'}
+            </button>
+          </div>
+
+          <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
             {SEED_TRENDS.map(t => (
               <button
                 key={t}
                 onClick={() => { setTrend(t); scan(t) }}
                 disabled={loading}
-                className="text-xs border border-gray-700 hover:border-blue-600 text-gray-400 hover:text-white px-3 py-1.5 rounded-full transition-colors disabled:opacity-40"
+                className="pill-glass shrink-0 text-xs disabled:opacity-40 transition-all hover:scale-105"
               >
                 {t}
               </button>
             ))}
           </div>
         </div>
-      </div>
+      </section>
 
-      {error && (
-        <div className="bg-red-900/30 border border-red-500/30 rounded-xl p-4 text-red-400 text-sm mb-6">
-          {error}
-        </div>
-      )}
+      <section className="relative z-10 flex justify-center gap-3 flex-wrap px-4 pb-16 -mt-6">
+        {['🎯 Validated ideas', '💰 Monetization paths', '⚡ Time to revenue', '🔍 Market signals'].map(label => (
+          <span key={label} className="pill-glass text-sm">{label}</span>
+        ))}
+      </section>
 
-      {loading && (
-        <div className="text-center py-20 space-y-3">
-          <div className="text-4xl animate-pulse">🤖</div>
-          <p className="text-gray-400 text-sm">Agent scanning market signals, Reddit, App Store gaps...</p>
-        </div>
-      )}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 pb-20">
+        {error && (
+          <div className="bg-red-900/30 border border-red-500/30 rounded-xl p-4 text-red-400 text-sm mb-6">
+            {error}
+          </div>
+        )}
 
-      {/* Report */}
-      {report && (
-        <div className="space-y-6">
-          <div className="bg-blue-900/20 border border-blue-800/40 rounded-2xl p-5">
-            <div className="flex items-center justify-between mb-2">
-              <h2 className="font-bold text-blue-300">📡 Trend: {report.trend}</h2>
-              <span className="text-xs text-gray-500">{report.date}</span>
+        {loading && (
+          <div className="text-center py-20 space-y-3">
+            <div className="text-4xl animate-pulse">🤖</div>
+            <p className="text-gray-400 text-sm">Scanning market signals...</p>
+          </div>
+        )}
+
+        {report && (
+          <div className="space-y-6">
+            <div className="glass-liquid rounded-2xl p-5">
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="font-bold text-indigo-300">📡 Trend: {report.trend}</h2>
+                <span className="text-xs text-gray-500">{report.date}</span>
+              </div>
+              <p className="text-sm text-gray-300 mb-3"><span className="text-yellow-400">⚡ Why now: </span>{report.whyNow}</p>
+              {report.redFlags?.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {report.redFlags.map(f => (
+                    <span key={f} className="text-xs text-red-400 bg-red-900/20 border border-red-800/40 px-2 py-1 rounded-full">
+                      ⚠ {f}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
-            <p className="text-sm text-gray-300 mb-3"><span className="text-yellow-400">⚡ Why now: </span>{report.whyNow}</p>
-            {report.redFlags?.length > 0 && (
-              <div className="flex flex-wrap gap-2">
-                {report.redFlags.map(f => (
-                  <span key={f} className="text-xs text-red-400 bg-red-900/20 border border-red-800/40 px-2 py-1 rounded-full">
-                    ⚠ {f}
-                  </span>
+
+            <div>
+              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+                {report.ideas?.length} Opportunities Found
+              </h3>
+              <div className="grid md:grid-cols-2 gap-4">
+                {report.ideas?.sort((a, b) => b.score - a.score).map((idea, i) => (
+                  <div key={i} className="reveal-3d">
+                    <IdeaCard idea={idea} />
+                  </div>
                 ))}
               </div>
-            )}
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
-              {report.ideas?.length} Opportunities Found
-            </h3>
-            <div className="grid md:grid-cols-2 gap-4">
-              {report.ideas?.sort((a, b) => b.score - a.score).map((idea, i) => (
-                <IdeaCard key={i} idea={idea} />
-              ))}
             </div>
-          </div>
 
-          <button
-            onClick={() => scan(report.trend)}
-            disabled={loading}
-            className="w-full border border-gray-700 hover:border-blue-600 text-gray-400 hover:text-white py-3 rounded-xl text-sm transition-colors disabled:opacity-40"
-          >
-            🔄 Re-scan same trend for fresh ideas
-          </button>
-        </div>
-      )}
+            <button
+              onClick={() => scan(report.trend)}
+              disabled={loading}
+              className="w-full border border-gray-700 hover:border-indigo-500 text-gray-400 hover:text-white py-3 rounded-xl text-sm transition-colors disabled:opacity-40"
+            >
+              🔄 Re-scan same trend for fresh ideas
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
