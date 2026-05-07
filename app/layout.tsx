@@ -1,15 +1,45 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import SharedNavbar from '@/components/SharedNavbar'
+import SharedFooter from '@/components/SharedFooter'
+import type { BrandConfig } from '@/components/SharedNavbar'
+
+export const brand: BrandConfig = {
+  name: 'IdeaAgent',
+  tagline: 'AI scans market trends and surfaces profitable SaaS ideas for solo builders.',
+  icon: '💡',
+  color: '#8b5cf6',
+  url: 'https://idea-agent.vercel.app',
+  navLinks: [{ label: 'Scan trends', href: '/' }],
+  cta: { label: 'Get ideas →', href: '/' },
+}
 
 export const metadata: Metadata = {
-  title: 'Business Idea Agent — Trend-driven SaaS opportunities',
-  description: 'AI agent that scans market trends and surfaces actionable, monetizable business ideas for solo developers',
+  title: 'IdeaAgent — AI-powered SaaS idea generator',
+  description: 'AI agent scans real market trends and surfaces actionable, monetizable SaaS business ideas for solo developers and indie hackers.',
+  keywords: ['SaaS ideas', 'startup ideas', 'AI business ideas', 'indie hacker', 'market trends'],
+  openGraph: { title: 'IdeaAgent — AI SaaS idea generator', description: 'AI scans trends and surfaces profitable startup ideas.', type: 'website', locale: 'en_GB', siteName: 'IdeaAgent' },
+  twitter: { card: 'summary_large_image', title: 'IdeaAgent', description: 'AI-powered SaaS idea generator.' },
+  robots: { index: true, follow: true },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="bg-gray-950 text-white min-h-screen">{children}</body>
+      <head>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            { "@type": "WebApplication", "name": "IdeaAgent", "url": brand.url, "description": brand.tagline, "applicationCategory": "BusinessApplication", "operatingSystem": "Web", "offers": { "@type": "Offer", "price": "0", "priceCurrency": "GBP" } },
+            { "@type": "WebSite", "name": "IdeaAgent", "url": brand.url }
+          ]
+        })}} />
+      </head>
+      <body className="flex flex-col min-h-screen">
+        <SharedNavbar brand={brand} />
+        <main className="flex-1 pt-16">{children}</main>
+        <SharedFooter brand={brand} />
+      </body>
     </html>
   )
 }
