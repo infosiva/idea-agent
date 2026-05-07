@@ -13,14 +13,14 @@ interface Props {
 
 declare global {
   interface Window {
-    SpeechRecognition: typeof SpeechRecognition
-    webkitSpeechRecognition: typeof SpeechRecognition
+    SpeechRecognition: any
+    webkitSpeechRecognition: any
   }
 }
 
 export default function VoiceButton({ onTranscript, lang = 'en-GB', color = '#f59e0b', position = 'bottom-right' }: Props) {
   const [state, setState] = useState<State>('idle')
-  const recRef = useRef<SpeechRecognition | null>(null)
+  const recRef = useRef<any>(null)
 
   const posClass = {
     'bottom-right': 'bottom-6 right-6',
