@@ -36,7 +36,7 @@ function ScoreBar({ score }: { score: number }) {
 function IdeaCard({ idea }: { idea: BusinessIdea }) {
   const [expanded, setExpanded] = useState(false)
   return (
-    <div className="bg-gray-900 border border-gray-800 hover:border-gray-600 rounded-2xl p-5 space-y-3 transition-colors">
+    <div className="bg-gray-900/60 border border-white/[0.08] hover:border-white/20 rounded-2xl p-5 space-y-3 transition-all card-hover card-tilt backdrop-blur-sm">
       <div className="flex items-start justify-between gap-3">
         <h3 className="font-bold text-lg leading-tight">{idea.title}</h3>
         <span className={`shrink-0 text-xs px-2 py-1 rounded-full border font-medium ${EFFORT_COLOR[idea.effort]}`}>
@@ -118,19 +118,28 @@ export default function Home() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-10">
+    <div className="max-w-4xl mx-auto px-4 py-10 relative">
+      {/* Noise overlay */}
+      <div className="noise-overlay" aria-hidden="true" />
+
+      {/* Ambient orbs */}
+      <div className="orb orb-1" style={{ width: '400px', height: '400px', top: '-150px', left: '-100px' }} aria-hidden="true" />
+      <div className="orb orb-2" style={{ width: '350px', height: '350px', top: '50px', right: '-100px' }} aria-hidden="true" />
+
       {/* Header */}
-      <div className="mb-10 text-center">
-        <h1 className="text-3xl font-bold mb-2">
-          <span className="text-blue-400">Business</span> Idea Agent
+      <div className="mb-10 text-center relative z-10">
+        <div className="badge-3d mx-auto mb-4 w-fit">🤖 AI Market Intelligence</div>
+        <h1 className="text-3xl md:text-4xl font-bold mb-3 reveal-3d">
+          <span className="gradient-text">Business</span> Idea Agent
         </h1>
-        <p className="text-gray-400 text-sm max-w-lg mx-auto">
+        <p className="text-white/50 text-sm max-w-lg mx-auto reveal stagger-1">
           AI agent scans current market trends, finds gaps, and surfaces actionable SaaS ideas you can build and monetize this week.
         </p>
+        <div className="glow-line mt-6 reveal stagger-2" />
       </div>
 
       {/* Input */}
-      <div className="bg-gray-900 border border-gray-800 rounded-2xl p-5 mb-6 space-y-4">
+      <div className="bg-gray-900/60 backdrop-blur-sm border border-white/[0.08] rounded-2xl p-5 mb-6 space-y-4 relative z-10 reveal stagger-2">
         <div className="flex gap-3">
           <input
             value={trend}
