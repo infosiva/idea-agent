@@ -43,14 +43,15 @@ export default function VoiceButton({ onTranscript, lang = 'en-GB', color = '#f5
     rec.interimResults = false
     rec.maxAlternatives = 1
     rec.onstart = () => setState('listening')
-    rec.onresult = (e) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    rec.onresult = (e: any) => {
       setState('processing')
       const text = e.results[0][0].transcript
       onTranscript(text)
       setTimeout(() => setState('idle'), 800)
     }
     rec.onerror = () => { setState('error'); setTimeout(() => setState('idle'), 1500) }
-    rec.onend = () => { if (state === 'listening') setState('idle') }
+    rec.onend = () => { if ((state as string) === 'listening') setState('idle') }
     rec.start()
     recRef.current = rec
   }, [state, isSupported, lang, onTranscript])
