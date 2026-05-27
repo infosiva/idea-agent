@@ -12,7 +12,7 @@ const brand: BrandConfig = {
   tagline: 'AI scans market trends and surfaces profitable SaaS ideas for solo builders.',
   icon: '💡',
   color: '#8b5cf6',
-  url: 'https://idea-agent.vercel.app',
+  url: 'https://ideaagent.app',
   navLinks: [{ label: 'Scan trends', href: '/' }],
   cta: { label: 'Get ideas →', href: '/' },
 }
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   title: 'IdeaAgent — AI-powered SaaS idea generator',
   description: 'AI agent scans real market trends and surfaces actionable, monetizable SaaS business ideas for solo developers and indie hackers.',
   keywords: ['SaaS ideas', 'startup ideas', 'AI business ideas', 'indie hacker', 'market trends'],
-  metadataBase: new URL('https://idea-agent.vercel.app'),
+  metadataBase: new URL('https://ideaagent.app'),
   openGraph: { title: 'IdeaAgent — AI SaaS idea generator', description: 'AI scans trends and surfaces profitable startup ideas.', type: 'website', locale: 'en_GB', siteName: 'IdeaAgent' },
   twitter: { card: 'summary_large_image', title: 'IdeaAgent', description: 'AI-powered SaaS idea generator.' },
   robots: { index: true, follow: true },
