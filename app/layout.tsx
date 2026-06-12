@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   description: 'AI agent scans real market trends and surfaces actionable, monetizable SaaS business ideas for solo developers and indie hackers.',
   keywords: ['SaaS ideas', 'startup ideas', 'AI business ideas', 'indie hacker', 'market trends'],
   metadataBase: new URL('https://ideaagent.app'),
-  openGraph: { title: 'IdeaAgent — AI SaaS idea generator', description: 'AI scans trends and surfaces profitable startup ideas.', type: 'website', locale: 'en_GB', siteName: 'IdeaAgent' },
-  twitter: { card: 'summary_large_image', title: 'IdeaAgent', description: 'AI-powered SaaS idea generator.' },
+  openGraph: { title: 'IdeaAgent — AI SaaS idea generator', description: 'AI scans trends and surfaces profitable startup ideas.', type: 'website', locale: 'en_GB', siteName: 'IdeaAgent', images: [{ url: '/og.png', width: 1200, height: 630 }] },
+  twitter: { card: 'summary_large_image', title: 'IdeaAgent', description: 'AI-powered SaaS idea generator.', images: ['/og.png'] },
   robots: { index: true, follow: true },
 }
 
