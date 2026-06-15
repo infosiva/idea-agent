@@ -2,14 +2,14 @@ export const metadata = { title: 'Privacy Policy — Idea Agent', description: '
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section style={{ marginBottom: 32 }}>
-    <h2 style={{ fontSize: 20, fontWeight: 700, color: '#a78bfa', marginBottom: 12 }}>{title}</h2>
+    <h2 style={{ fontSize: 20, fontWeight: 700, color: '#d8b4fe', marginBottom: 12 }}>{title}</h2>
     <div style={{ color: '#d1d5db', lineHeight: 1.7, fontSize: 15 }}>{children}</div>
   </section>
 )
 
 export default function PrivacyPage() {
   return (
-    <main style={{ maxWidth: 760, margin: '0 auto', padding: '60px 24px 80px', background: '#060610', minHeight: '100vh' }}>
+    <main style={{ maxWidth: 760, margin: '0 auto', padding: '60px 24px 80px', background: '#12051e', minHeight: '100vh' }}>
       <h1 style={{ fontSize: 32, fontWeight: 900, color: '#f9fafb', marginBottom: 8 }}>Privacy Policy</h1>
       <p style={{ color: '#6b7280', marginBottom: 48, fontSize: 14 }}>Last updated: June 2025</p>
       <Section title="Data We Collect"><p>We collect idea prompts and topic descriptions you submit. We do not store these beyond the active generation session.</p></Section>
