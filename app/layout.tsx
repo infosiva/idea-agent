@@ -6,6 +6,7 @@ import SharedFooter from '@/components/SharedFooter'
 import DesignEffects from '@/components/DesignEffects'
 import type { BrandConfig } from '@/components/SharedNavbar'
 import FloatingChatWrapper from '@/components/FloatingChatWrapper'
+import FeedbackWidget from '@/components/FeedbackWidget'
 
 const brand: BrandConfig = {
   name: 'IdeaAgent',
@@ -45,6 +46,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main className="flex-1 pt-16">{children}</main>
         <SharedFooter brand={brand} />
         <FloatingChatWrapper />
+        <FeedbackWidget siteName="IdeaAgent" />
         <Script defer data-site="idea-agent.vercel.app" src="http://31.97.56.148:3098/t.js" strategy="afterInteractive" />
       </body>
     </html>
