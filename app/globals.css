@@ -26,8 +26,8 @@
   --radius-xl: 1.5rem;
 
   /* Theme vars — injected by layout.tsx */
-  --theme-primary:   #a855f7;
-  --theme-secondary: #d8b4fe;
+  --theme-primary:   #14b8a6;
+  --theme-secondary: #5eead4;
   --theme-base:      #0b1120;
   --accent:   var(--theme-primary);
   --accent-2: var(--theme-secondary);
@@ -590,13 +590,13 @@ body {
 }
 .liquid-blob-2 {
   width: 400px; height: 400px;
-  background: radial-gradient(circle, #a855f7, #34d399 60%, transparent);
+  background: radial-gradient(circle, var(--theme-primary, #14b8a6), #34d399 60%, transparent);
   animation-delay: -4s, -3s;
   opacity: 0.12;
 }
 .liquid-blob-3 {
   width: 300px; height: 300px;
-  background: radial-gradient(circle, #fbbf24, var(--theme-primary, #7c3aed) 60%, transparent);
+  background: radial-gradient(circle, #fbbf24, var(--theme-primary, #14b8a6) 60%, transparent);
   animation-delay: -8s, -5s;
   opacity: 0.10;
 }

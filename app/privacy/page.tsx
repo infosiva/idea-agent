@@ -2,7 +2,7 @@ export const metadata = { title: 'Privacy Policy — Idea Agent', description: '
 
 const Section = ({ title, children }: { title: string; children: React.ReactNode }) => (
   <section style={{ marginBottom: 32 }}>
-    <h2 style={{ fontSize: 20, fontWeight: 700, color: '#d8b4fe', marginBottom: 12 }}>{title}</h2>
+    <h2 style={{ fontSize: 20, fontWeight: 700, color: '#5eead4', marginBottom: 12 }}>{title}</h2>
     <div style={{ color: '#d1d5db', lineHeight: 1.7, fontSize: 15 }}>{children}</div>
   </section>
 )
