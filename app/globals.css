@@ -29,6 +29,8 @@
   --theme-primary:   #a855f7;
   --theme-secondary: #d8b4fe;
   --theme-base:      #0b1120;
+  --accent:   var(--theme-primary);
+  --accent-2: var(--theme-secondary);
 }
 
 /* ─────────────────────────────────────────
