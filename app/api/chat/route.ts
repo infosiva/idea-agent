@@ -1,7 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { callAI } from '@/lib/ai'
+import { AI_LIMITER } from '@/lib/rateLimit'
 
 export async function POST(req: NextRequest) {
+  const limited = AI_LIMITER.check(req); if (limited) return limited
+
   try {
     const { messages, system } = await req.json()
     const sysPrompt = system ?? 'You are IdeaAgent — a creative brainstorming AI. Help users generate ideas, validate concepts, think through business models, and develop creative projects. Be imaginative and concise.'
