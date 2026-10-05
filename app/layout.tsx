@@ -8,6 +8,7 @@ import type { BrandConfig } from '@/components/SharedNavbar'
 import FloatingChatWrapper from '@/components/FloatingChatWrapper'
 import FeedbackWidget from '@/components/FeedbackWidget'
 
+import { MotionProvider } from "@infosiva/shared-ui/modern";
 const brand: BrandConfig = {
   name: 'IdeaAgent',
   tagline: 'AI scans market trends and surfaces profitable SaaS ideas for solo builders.',
@@ -50,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="flex flex-col min-h-screen">
         <DesignEffects />
         <SharedNavbar brand={brand} />
-        <main className="flex-1 pt-16">{children}</main>
+        <main className="flex-1 pt-16"><MotionProvider>{children}</MotionProvider></main>
         <SharedFooter brand={brand} />
         <FloatingChatWrapper />
         <FeedbackWidget siteName="IdeaAgent" />

@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Sparkles } from 'lucide-react'
 import { BusinessIdea, TrendReport } from '@/lib/trendScanner'
+import { MagneticButton } from "@infosiva/shared-ui/modern";
 
 const SEED_TRENDS = [
   'AI agents and autonomous workflows',
@@ -155,7 +156,7 @@ export default function Home() {
               placeholder="What trend are you curious about?"
               className="flex-1 bg-transparent px-4 py-3 text-sm md:text-base focus:outline-none placeholder-gray-500"
             />
-            <button
+            <MagneticButton
               onClick={() => scan()}
               disabled={loading}
               style={{ background: 'linear-gradient(135deg, #6366f1, #8b5cf6)' }}
@@ -163,7 +164,7 @@ export default function Home() {
             >
               <Sparkles className="w-4 h-4" />
               {loading ? 'Scanning...' : 'Scan'}
-            </button>
+            </MagneticButton>
           </div>
 
           <div className="flex gap-2 overflow-x-auto pb-1 scrollbar-hide">
