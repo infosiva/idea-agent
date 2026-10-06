@@ -7,6 +7,7 @@ import DesignEffects from '@/components/DesignEffects'
 import type { BrandConfig } from '@/components/SharedNavbar'
 import FloatingChatWrapper from '@/components/FloatingChatWrapper'
 import FeedbackWidget from '@/components/FeedbackWidget'
+import { loadSiteTheme, buildThemeStyleTag, buildGa4Snippet } from '@/lib/theme-loader'
 
 import { MotionProvider } from "@infosiva/shared-ui/modern";
 const brand: BrandConfig = {
@@ -29,10 +30,14 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const theme = await loadSiteTheme('idea-agent')
+  const themeCss = buildThemeStyleTag(theme)
+  const ga4 = buildGa4Snippet(theme)
   return (
     <html lang="en">
       <head>
+        {themeCss ? <style dangerouslySetInnerHTML={{ __html: themeCss }} /> : null}
         <meta name="google-adsense-account" content="ca-pub-4237294630161176" />
         <Script
                   async
@@ -55,6 +60,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SharedFooter brand={brand} />
         <FloatingChatWrapper />
         <FeedbackWidget siteName="IdeaAgent" />
+        {ga4 && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${theme?.analytics?.ga4Id}`} strategy="afterInteractive" />
+            <Script id="ga4-init" strategy="afterInteractive" dangerouslySetInnerHTML={{ __html: ga4 }} />
+          </>
+        )}
       </body>
     </html>
   )
