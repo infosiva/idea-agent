@@ -129,9 +129,7 @@ export default function Home() {
 
       <nav className="relative z-20 flex items-center justify-between px-6 md:px-10" style={{ height: '52px' }}>
         <div className="flex items-center gap-2.5">
-          <Sparkles className="w-5 h-5 text-indigo-400" />
-          <span className="font-bold text-base tracking-tight">IdeaAgent</span>
-          <span className="pill-glass text-xs ml-1">AI Market Intel</span>
+          <span className="pill-glass text-xs">AI Market Intel</span>
         </div>
         <a href="#" className="text-sm text-gray-400 hover:text-white transition-colors">Sign in</a>
       </nav>
