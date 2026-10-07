@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { AnimatedBg } from "@/components/AnimatedBg"
 import Script from 'next/script'
 import './globals.css'
 import SharedNavbar from '@/components/SharedNavbar'
@@ -54,6 +55,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         })}} />
       </head>
       <body className="flex flex-col min-h-screen">
+        <AnimatedBg theme={theme} fallback="aurora" />
         <DesignEffects />
         <SharedNavbar brand={brand} />
         <main className="flex-1 pt-16"><MotionProvider>{children}</MotionProvider></main>

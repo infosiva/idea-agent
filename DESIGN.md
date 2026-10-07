@@ -147,3 +147,7 @@ Hero = full-width chat preview component. Keep nav height < 56px. Feature pills 
 ---
 
 *Generated: 2026-05-07 by design-pipeline.ts*
+
+## ai-core
+- ai-core: exempt: idea generation and chat are single-shot prompts via the shared free-first chain; no document upload, RAG, memory or vector retrieval.
+- Logo: `components/Logo.tsx` used in `SharedNavbar`; favicon `app/icon.svg`. Background: `components/AnimatedBg.tsx` (hub `layout.bgAnimation`).

@@ -1,4 +1,5 @@
 'use client'
+import { Logo } from '@/components/Logo'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 
@@ -40,15 +41,7 @@ export default function SharedNavbar({ brand }: { brand: BrandConfig }) {
         <div className="max-w-5xl mx-auto px-5 sm:px-8 h-14 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group select-none">
-            <span
-              className="text-lg leading-none transition-transform duration-200 group-hover:scale-110"
-              aria-hidden
-            >
-              {brand.icon}
-            </span>
-            <span className="font-semibold text-white/90 text-sm tracking-tight">
-              {brand.name}
-            </span>
+            <Logo size={26} />
           </Link>
 
           {/* Desktop links */}
